@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+
+  <head>
+
+    <title>Cyborg - Awesome HTML5 Template</title>
+
+  </head>
+
+<body>
+  {% block content %}
+  
+  
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content pt-2 pb-5">
+
+            
+            
+            <!-- ***** Gaming Library Start ***** -->
+            <div class="gaming-library" style="overflow-y:auto; height:400px;">
+                <div class="col-lg-12">
+              {% for i in users %}
+              <div class="item">
+                <ul>
+                    {% if i.profile_image %}
+                    <li><img src="{{i.profile_image.url}}" alt="" class="templatemo-item" height="80px"></li>
+                    {% else %}
+                    <li><img src="{% static 'assets/images/game-02.jpg' %}" alt="" height="80px" class="templatemo-item"></li>
+                    {% endif %}
+
+                    {% if i.firstname or i.lastname %}
+                    
+                    <li><h4>{{i.firstname}}</h4><span>{{i.lastname}}</span></li>
+                    {% else %}
+                    {% if i.username %}
+                    <li><h4>{{i.username}}</h4></li>
+                    {% else %}
+                    <li><h4>{{i.user.username}}</h4></li>
+                    {% endif %}
+                    {% endif %}
+
+                <li><h4>Hours Played</h4><span>740 H 52 Mins</span></li>
+                <li><h4>Currently</h4><span>Downloaded</span></li>
+                {% if i.user.username == user.username %}
+                <li><div class="main-border-button"><a href="{% url 'profile' %}">Open</a></div></li>
+   
+                {% else %}
+
+                {% if i.username %}
+                <li><div class="main-border-button"><a href="/users_profile/{{i.username}}/">Open</a></div></li>
+                {% else %}
+                <li><div class="main-border-button"><a href="/users_profile/{{i.user.username}}/">Open</a></div></li>
+                {% endif %}
+                {% endif %}
+              </ul>
+            </div>
+              {% endfor %}
+            </div>
+           
+          </div>
+          <!-- ***** Gaming Library End ***** -->
+         
+        </div>
+    </div>
+    </div>
+  </div>
+  
+
+
+
+  {% endblock %}
+  </body>
+
+</html>

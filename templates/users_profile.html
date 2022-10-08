@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+
+  <head>
+
+    <title>Cyborg - Awesome HTML5 Template</title>
+
+  </head>
+
+<body>
+  {% block content %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Banner Start ***** -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="main-profile ">
+                <div class="row">
+                  <div class="col-lg-4">
+                    {% if searched_user %}
+                    {% for i in searched_user %}
+                    {% if i.profile_image %}
+                    <img src="/media/{{i.profile_image}}" alt="Profile_image" style="border-radius: 23px; height: 350px; ">
+                    {% else %}
+                    <img src="{% static 'assets/images/profile.jpg' %}" alt="" style="border-radius: 23px; height: 350px;">
+                    {% endif %}
+                    {% endfor %}
+                    {% else %}
+                    <img src="{% static 'assets/images/profile.jpg' %}" alt="" style="border-radius: 23px; height: 350px;">
+                    {% endif %}
+                  </div>
+                  <div class="col-lg-4 align-self-center">
+                    <div class="main-info header-text">
+
+
+                    {% if searched_user %}
+                    {% for i in searched_user %}
+                    {% if i.firstname or i.lastname %}
+                    <h4>{{i.firstname}}  {{i.lastname}}</h4>
+                    {% else %}
+                    <h4>{{user.username}}</h4>
+                    {% endif %}
+                    {% endfor %}
+                    {% else %}
+                    <h4>{{user.username}}</h4>
+                    {% endif %}
+
+
+                    {% if searched_user %}
+                    {% for i in searched_user %}
+                    {% if i.bio %}
+                    <p>{{i.bio}}</p>
+                    {% else %}
+                    <p>He hasn't updated His bio.</p>
+                    {% endif %}
+                    {% endfor %}
+                    {% else %}
+                    <p>He hasn't updated His bio.</p>
+                    {% endif %}
+
+
+                    </div>
+                  </div>
+                  <div class="col-lg-4 align-self-center">
+                    <ul>
+                      {% for i in upload_count %}
+                      <li>Wallpaper Uploaded <span>{{i.count_of_image_uploads}}</span></li>
+                        {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!-- ***** Banner End ***** -->
+          <div class="live-stream">
+            
+            <div class="row"  style="overflow-y:auto; height:350px;">
+              {% for i in uploaded_wallpapers %}
+              <div class="col-lg-3 col-sm-6">
+                <div class="item">
+                  <div class="thumb">
+                    {% if i.image %}
+                    <img style="height: 270px;" src="{{i.image.url}}" alt="{{i.image}}">
+                    {% endif %}
+                    <div class="hover-effect">
+                      <div class="content">
+                        <div class="live">
+                         
+                        </div>
+                        <ul>
+                         <li><a ><i class="fa fa-download"></i>   {{i.download_count}}</a></li>
+                            
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="down-content">
+                    
+                    <h4>{{i.name}}</h4>
+                  </div> 
+                </div>
+              </div>
+              {% endfor %}
+              
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+
+  {% endblock %}
+  </body>
+
+</html>
+

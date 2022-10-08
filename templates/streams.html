@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+
+  <head>
+
+    <title>Cyborg - Awesome HTML5 Template</title>
+
+  </head>
+
+<body>
+  {% block content %}
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Featured Games Start ***** -->
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="top-downloaded">
+                <div class="heading-section">
+                  <h4><em>Top</em> Downloaded</h4>
+                </div>
+                <ul>
+                  {% for i in most_downloaded_post|slice:":3" %}
+                  <li>
+                    <img src="{{i.image.image.url}}" style="height: 80px;" alt="" class="templatemo-item">
+                    <h4>{{i.image.name}}</h4>
+                    <h6>{{i.image.user}}</h6>
+                    <span><i class="fa fa-download" style="color: #ec6090;"></i> {{i.count_of_image_downloads}}</span>
+                   
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="top-downloaded">
+                <div class="heading-section">
+                  <h4><em>Your Latest</em> Downloaded</h4>
+                </div>
+                <ul>
+                  {% for i in latest_downloaded|slice:":3" %}
+                  <li>
+                    <img src="{{i.image.image.url}}" style="height: 80px;" alt="" class="templatemo-item">
+                    <h4>{{i.image.name}}</h4>
+                    <h6>{{i.image.user}}</h6>
+                    <span><i class="fa fa-download" style="color: #ec6090;"></i> {{i.count_of_image_downloads}}</span>
+                   
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+           
+            <div class="col-lg-4">
+              <div class="top-streamers">
+                <div class="heading-section">
+                  <h4><em>Top</em> Uploaders</h4>
+                </div>
+                <ul>
+                  {% for i in most_Uploaders|slice:":5" %}
+                  <li>
+                    <h6><i class="fa fa-check"></i> {{i.user.username}}</h6>
+                    <div class="main-button">
+                      {% if i.user.username == user.username %}
+                      <a href="{% url 'profile' %}">Open</a>
+                      
+                      {% else %}
+                      <a href="/users_profile/{{i.user.username}}/">Open</a>
+                      
+                      {% endif %}
+                    </div>
+                  </li>
+                 {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Featured Games End ***** -->
+
+        
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  {% endblock %}
+  </body>
+
+</html>

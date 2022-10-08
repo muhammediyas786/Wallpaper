@@ -1,0 +1,229 @@
+{% load static %}
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-cyborg-gaming.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<!--
+
+TemplateMo 579 Cyborg Gaming
+
+https://templatemo.com/tm-579-cyborg-gaming
+
+-->
+<style>
+
+.dropbtn {
+  background-color: #e75e8d !important;
+  color: white;
+  
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #ffffff;}
+.dropbtn {
+  background-color: #ffffff;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #030303;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #e75e8d !important;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: rgb(30, 30, 30);}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #fefffe;}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px #ff4a89 ; 
+}</style>  
+</head>
+
+<body class="">
+<!-- ***** Preloader Start ***** -->
+<!-- <div id="js-preloader" class="js-preloader">
+  <div class="preloader-inner">
+    <span class="dot"></span>
+    <div class="dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</div> -->
+<!-- ***** Preloader End ***** -->
+
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <nav class="main-nav">
+                  <!-- ***** Logo Start ***** -->
+                  <a href="#" class="logo">
+                    <H2 style="color:#ff4a89">WALLPAPERS</H2>
+                  </a>
+                  <!-- ***** Logo End ***** -->
+                  <!-- ***** Search End ***** -->
+                  <div class="search-input">
+                    <form id="search" action="{% url 'search' %}">
+                      <input type="search" placeholder="Search Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                      <i class="fa fa-search"></i>
+                    </form>
+                  </div>
+                  <!-- ***** Search End ***** -->
+                  <!-- ***** Menu Start ***** -->
+                  <ul class="nav">
+                      <li><a href="/" class="active">Home</a></li>
+                       <li><a href="{% url 'upload' %}">Upload</a></li>
+                      <li><a href="{% url 'more' %}">Details</a></li>
+
+                      {% if profile %}                      <!--  FIND PROFILE IF CONDITION START-->
+
+                      {% for i in profile %}                <!--  FOR LOOP START -->
+
+                      {% if i.profile_image %}              <!--  PROFILE IMAGE IF CONDITION START -->
+
+                      {% if i.firstname or i.lastname %}    <!--  FIRST OR LAST NAMES IF CONDITION START WITH IMAGE  -->
+                      <li><a href="{% url 'profile' %}">{{i.firstname}}  {{i.lastname}} <img src="/media/{{i.profile_image}}" style='height: 30px;' alt=""></a></li>
+                      {% else %}                           
+                      <li><a href="{% url 'profile' %}">{{user.username}}<img src="{% static 'assets/images/profile-header.jpg' %}" style='height: 30px;' alt=""></a></li>
+                      {% endif %}                           <!--  FIRST OR LAST NAMES IF CONDITION END -->
+
+
+                      {% else %}                            
+
+                      {% if i.firstname or i.lastname %}    <!-- FIRST OR LAST NAMES IF CONDITION START WITHOUT IMAGE -->
+                      <li><a href="{% url 'profile' %}">{{i.firstname}}  {{i.lastname}} <img src="{% static 'assets/images/profile-header.jpg' %}" style='height: 30px;' alt=""></a></li>
+                      {% else %}                            <!--   -->
+                      <li><a href="{% url 'profile' %}">{{user.username}}<img src="{% static 'assets/images/profile-header.jpg' %}" style='height: 30px;' alt=""></a></li>
+                      {% endif %}                           <!--  FIRST OR LAST NAMES IF CONDITION END WITHOUT IMAGE -->
+
+                      {% endif %}                           <!--  PROFILE IMAGE IF CONDITION END -->
+
+                      {% endfor %}                          <!--  FOR LOOP END -->
+
+                      {% else %}                            <!--  FIND PROFILE -->
+
+                      <li><a href="{% url 'profile' %}">{{user.username}}<img src="{% static 'assets/images/profile-header.jpg' %}" style='height: 30px;' alt=""></a></li>
+                      {% endif %}                           <!--  FIND PROFILE END  -->
+
+
+                  </ul>   
+                  <a class='menu-trigger'>
+                      <span>Menu</span>
+                  </a>
+                  <!-- ***** Menu End ***** -->
+              </nav>
+          </div>
+      </div>
+  </div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright © 2036 <a href="#">wallpapers</a> Company. All rights reserved. 
+            
+            <br>Design: <a href="#" target="_blank" title="free CSS templates">Muhammed Iyas</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+  <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+  <script src="{% static 'assets/js/tabs.js' %}"></script>
+  <script src="{% static 'assets/js/popup.js' %}"></script>
+  <script src="{% static 'assets/js/custom.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  </body>
+
+</html>

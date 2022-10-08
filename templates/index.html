@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+
+  <head>
+
+    <title>Cyborg - Awesome HTML5 Template</title>
+
+  <style>
+  .download{
+    cursor: pointer;
+  }
+    </style>
+  </head>
+
+<body>
+  {% block content %}
+  
+  
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Banner Start ***** -->
+          <div class="main-banner">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="header-text">
+                  <h6>Welcome To wallpapers</h6>
+                  <h4><em>Browse</em> Your Favourate Wallpapers Here</h4>
+                  
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Banner End ***** -->
+
+         <!-- ***** Live Stream Start ***** -->
+         <div class="live-stream">
+          <div class="col-lg-12">
+            <div class="heading-section">
+              <div class="dropdown ">
+                <button class="dropbtn rounded my-4">Category</button>
+                <div class="dropdown-content rounded">
+                  <a href="/">Home</a>
+                  {% for i in category %}
+                  <a href="{{i.get_url}}">{{i.category_name}}</a>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            {% for i in wallpapers %}
+            <div class="col-lg-3 col-sm-6">
+              <div class="item">
+                <div class="thumb">
+                  {% if i.image %}
+                  <img style="height: 270px;" src="{{i.image.url}}" alt="{{i.image}}">
+                  {% endif %}
+                  <div class="hover-effect">
+                    <div class="content">
+                      <div class="live">
+                                       
+                        {% if i.user.username == user.username %}
+                        <a href="{% url 'profile' %}">{{i.user}}</a>
+                        {% else %}
+                        <a href="/users_profile/{{i.user.username}}/">{{i.user}}</a>
+                        {% endif %}
+                      </div>
+                      <ul>
+                        <form action="" method="post">
+                          {% csrf_token %}
+                          <input type="hidden" name="image" value="{{i.uid}}">
+                          <input type="hidden" name="user" value="{{user.username}}">
+                        <li><a ><i class="fa fa-download"></i>   {{i.download_count}}</a></li>
+                          
+                          <li><a class="download" download="Wallpaper" href="{{i.image.url}}"   onclick="this.closest('form').submit();">
+                            <i class="fa fa-download"></i> Download</a></li>
+                        </form>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="down-content">
+                  
+                  <h4>{{i.name}}</h4>
+                </div> 
+              </div>
+            </div>
+            {% endfor %}
+            
+          </div>
+        </div>
+        <!-- ***** Live Stream End ***** -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ 
+
+  {% endblock %}
+  </body>
+
+</html>

@@ -1,0 +1,72 @@
+{% extends 'base.html' %} block content 
+{% load static %}
+<html lang="en">
+
+  <head>
+
+    <title>Cyborg - Awesome HTML5 Template</title>
+
+  </head>
+
+<body>
+  {% block content %}
+
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+         
+
+          <!-- ***** Details Start ***** -->
+          <div class="game-details">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="content">
+                  <div class="row">
+                    
+                    <div class="col-lg-12">
+                      <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label class="my-2 text-white" >Image Name</label><br>
+                        <input class="bg-dark border rounded" required name="image_name" style="border-color :  #e75e8d !important;" type="text"><br>
+                        <label class="my-2 text-white" >Image File</label><br>
+                        <input class="bg-dark w-50 border rounded" required name="image" style="border-color :  #e75e8d !important;" type="file"><br>
+                        <label class="my-2  text-white" >Image Category</label><br>
+                        <select class="bg-dark text-white w-50 rounded" required name="category" style="border-color :  #e75e8d !important;" id='country'>
+                          {% for i in category %}
+                          <option class="p-1" value='{{i.category_slug}}'>{{i.category_name}}</option>
+                          {% endfor %}
+                        </select>
+                        <div class="main-border-button">
+                          <a><Button type="submit" style="border:none;color: #e75e8d !important;background-color: rgba(221, 221, 221, 0);" class="w-100">Upload</Button></a>
+                        </div>
+                      </form>
+                      <script>
+                        $('.dropdown-menu li').click(function () {
+                            $('.dropdown-toggle b').remove().appendTo($('.dropdown-toggle').text($(this).text()));
+                        });
+                      </script>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Details End ***** -->
+
+         
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+
+  {% endblock %}
+  </body>
+
+</html>
