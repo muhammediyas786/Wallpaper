@@ -7,6 +7,7 @@ This project is made to download your favorite wallpapers and upload your wallpa
 
 ## Features
 
+- Login with google
 - You can find the wallpapers you want by category
 - Upload your favorite wallpapers
 - You can download the wallpaper you want by searching
