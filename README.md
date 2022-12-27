@@ -20,40 +20,40 @@ https://eweb.pythonanywhere.com/
 
 ## Home page
 
-![App Screenshot](https://github.com/muhammediyas786/Wallpaper/blob/master/screenshots/Screenshot_20221104_101735.png)
+![App Screenshot](https://dashing-pika-0fa706.netlify.app/screenshots/wallpaper-1.png)
 
 
 ## Upload page
 
-![App Screenshot](https://github.com/muhammediyas786/Wallpaper/blob/master/screenshots/Screenshot_20221104_102018.png)
+![App Screenshot](https://dashing-pika-0fa706.netlify.app/screenshots/wallpaper-6.png)
 
 
 ## Deatails page
 
-![App Screenshot](https://github.com/muhammediyas786/Wallpaper/blob/master/screenshots/Screenshot_20221104_102214.png)
+![App Screenshot](https://dashing-pika-0fa706.netlify.app/screenshots/wallpaper-5.png)
 
 
 ## Our profile page
 
-![App Screenshot](https://github.com/muhammediyas786/Wallpaper/blob/master/screenshots/Screenshot_20221104_102357.png)
+![App Screenshot](https://dashing-pika-0fa706.netlify.app/screenshots/wallpaper-8.png)
 
 
 ## Others profile page
 
-![App Screenshot](https://github.com/muhammediyas786/Wallpaper/blob/master/screenshots/Screenshot_20221104_102429.png)
+![App Screenshot](https://dashing-pika-0fa706.netlify.app/screenshots/wallpaper-7.png)
 
 
 ## Login page
 
-![App Screenshot](https://github.com/muhammediyas786/Wallpaper/blob/master/screenshots/Screenshot_20221104_101809.png)
+![App Screenshot](https://dashing-pika-0fa706.netlify.app/screenshots/wallpaper-2.png)
 
 
 ## Registration page
 
-![App Screenshot](https://github.com/muhammediyas786/Wallpaper/blob/master/screenshots/Screenshot_20221104_101826.png)
+![App Screenshot](https://dashing-pika-0fa706.netlify.app/screenshots/wallpaper-4.png)
 
 
 ## Search page
 
-![App Screenshot](https://github.com/muhammediyas786/Wallpaper/blob/master/screenshots/Screenshot_20221104_102001.png)
+![App Screenshot](https://dashing-pika-0fa706.netlify.app/screenshots/wallpaper-3.png)
 
